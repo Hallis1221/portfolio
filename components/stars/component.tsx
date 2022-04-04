@@ -1,38 +1,42 @@
-import { useMemo, useRef } from "react";
-import {useFrame} from "@react-three/fiber"
+import { MutableRefObject, useMemo, useRef } from "react";
+import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
-export function Stars(){
-    let group = useRef()
-    let rotation = 0;
+function degToRad(degrees: number) {
+  var pi = Math.PI;
+  return degrees * (pi / 180);
+}
 
-    useFrame(() => {
-        if (group.current) {
-            // Some things maybe shouldn't be declarative, we're in the render-loop here with full access to the instance
-            const r = 5 * Math.sin(THREE.Math.degToRad((rotation += 0.025)));
-            group.current.rotation.set(r, r, r);
-          }
-    });
+export function Stars() {
+  let group: MutableRefObject<THREE.Group | undefined> = useRef();
+  let rotation = 0;
 
-    const [geo, mat, coords] = useMemo(() => {
-          const geo = new THREE.SphereBufferGeometry(1, 10, 10);
-    const mat = new THREE.MeshBasicMaterial({
-      color: new THREE.Color("white")
-    });
+  useFrame(() => {
+    if (group.current) {
+      // Some things maybe shouldn't be declarative, we're in the render-loop here with full access to the instance
+      const r = 5 * Math.sin(degToRad((rotation += 0.025)));
+      group.current.rotation.set(r, r, r);
+    }
+  });
+
+  const [coords] = useMemo(() => {
     const coords = new Array(1000)
-      .fill(0,1)
-      .map((i) => [
+      .fill(0, 1)
+      .map((_) => [
         Math.random() * 800 - 400,
         Math.random() * 800 - 400,
-        Math.random() * 800 - 400
+        Math.random() * 800 - 400,
       ]);
-    return [geo, mat, coords];
+    return [coords];
   }, []);
 
   return (
     <group ref={group}>
       {coords.map(([p1, p2, p3], i) => (
-        <mesh key={i} geometry={geo} material={mat} position={[p1, p2, p3]} />
+        <mesh key={i} position={[p1, p2, p3]}>
+          <sphereBufferGeometry args={[1, 10, 10]} />
+          <meshBasicMaterial color={0xffffff} />
+        </mesh>
       ))}
     </group>
   );

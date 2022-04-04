@@ -43,7 +43,7 @@ const Home: NextPage = () => {
         className="h-screen"
       >
        <Canvas
-        style={{ background: "#272727" }}
+        style={{ background: "black" }}
         camera={{ position: [0, 0, 15] }}
       >
         <motion3D.ambientLight intensity={0.5} />
@@ -55,6 +55,7 @@ const Home: NextPage = () => {
           castShadow
         />
         <Stars />
+        <Box />
       </Canvas>
       </motion.div>{" "}
     </>
