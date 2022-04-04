@@ -14,7 +14,7 @@ export function Stars() {
   useFrame(() => {
     if (group.current) {
       // Some things maybe shouldn't be declarative, we're in the render-loop here with full access to the instance
-      const r = 5 * Math.sin(degToRad((rotation += 0.025)));
+      const r = 5 * Math.sin(degToRad((rotation += 0.015)));
       group.current.rotation.set(r, r, r);
     }
   });
