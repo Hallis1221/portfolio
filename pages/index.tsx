@@ -3,8 +3,6 @@ import { motion } from "framer-motion";
 import { motion as motion3D } from "framer-motion-3d";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
-import { PointLight } from "three";
-import { Box } from "../components/box";
 import { LoadingIntro } from "../components/intro";
 import { Stars } from "../components/stars";
 
@@ -22,9 +20,6 @@ const mainVariants = {
 const Home: NextPage = () => {
   const [showIntro, setShowIntro] = useState(true);
   const [main, setMain] = useState(false);
-
-  const overlay = useRef()
-  const caption = useRef()
 
   useEffect(() => {
     const ids = [
