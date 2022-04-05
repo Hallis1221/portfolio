@@ -55,15 +55,6 @@ const Home: NextPage = () => {
           />
           <Stars />
         </Canvas>
-        <div className="hero min-h-screen min-w-screen absolute top-5 justify-center">
-          <div className="hero-overlay bg-opacity-0 ">
-            <div className="hero-content text-center text-neutral-content ">
-              <div className="max-w-md">
-                <h1 className="mb-5 font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-r from-white to-purple-500">Welcome.</h1>
-              </div>
-            </div>
-          </div>
-        </div>
       </motion.div>{" "}
     </>
   );
