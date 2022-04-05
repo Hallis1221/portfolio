@@ -1,10 +1,8 @@
-import { Canvas } from "@react-three/fiber";
 import { motion } from "framer-motion";
 import { motion as motion3D } from "framer-motion-3d";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { LoadingIntro } from "../components/intro";
-import { Stars } from "../components/stars";
 
 const mainVariants = {
   initial: {
@@ -40,22 +38,8 @@ const Home: NextPage = () => {
         transition={{ duration: 1.0 }}
         className="h-screen"
       >
-        <Canvas
-          style={{ background: "black" }}
-          camera={{ position: [0, 0, 15] }}
-          className="flex absolute"
-        >
-          <motion3D.ambientLight intensity={0.5} />
-          <motion3D.spotLight
-            intensity={0.6}
-            position={[30, 30, 50]}
-            angle={0.2}
-            penumbra={1}
-            castShadow
-          />
-          <Stars />
-        </Canvas>
-      </motion.div>{" "}
+        
+      </motion.div>
     </>
   );
 };
