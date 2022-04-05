@@ -1,6 +1,7 @@
 import { MutableRefObject, useMemo, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+import { useScrollPercentage } from "react-scroll-percentage";
 
 function degToRad(degrees: number) {
   var pi = Math.PI;
@@ -11,10 +12,12 @@ export function Stars() {
   let group: MutableRefObject<THREE.Group | undefined> = useRef();
   let rotation = 0;
 
+  const [ref, percentage] = useScrollPercentage({});
+
   useFrame(() => {
     if (group.current) {
       // Some things maybe shouldn't be declarative, we're in the render-loop here with full access to the instance
-      const r = 5 * Math.sin(degToRad((rotation += 0.015)));
+      const r = 5 * Math.sin(degToRad((rotation += percentage/100+0.01)));
       group.current.rotation.set(r, r, r);
     }
   });
