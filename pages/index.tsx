@@ -81,7 +81,10 @@ const Home: NextPage = () => {
               <div className="hero-content text-center text-neutral-content">
                 <div className="">
                   <h1 className="mb-16 text-8xl font-extrabold">
-                    Hey, I am Halvor 👋{" "}
+                    Hey, I am Halvor{" "}
+                    <div className="inline">
+                      <div className="hover:transparent inline">👋 </div>
+                    </div>
                   </h1>
 
                   <div className="mb-5 flex text-center flex-row justify-center text-xl md:text-3xl">
@@ -91,7 +94,6 @@ const Home: NextPage = () => {
                         cursor: "",
                         loop: true,
                         wrapperClassName: "font-bold",
-                        
                       }}
                       onInit={(typewriter) => {
                         typewriter
@@ -120,7 +122,7 @@ const Home: NextPage = () => {
                           .typeString(
                             '<div class="px-2 text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-yellow-600">javascript</div>'
                           )
-                         
+
                           .start();
                       }}
                     />
@@ -131,6 +133,7 @@ const Home: NextPage = () => {
             </div>
           </motion.div>
         </div>
+        <div className="h-screen">Drum roll</div>
         <div className="h-screen">Intro</div>
         <div className="h-screen">Projects</div>
         <div className="h-screen">Knowledge</div>
