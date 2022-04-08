@@ -4,7 +4,12 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      // Use the rubik font family for all text
+      fontFamily: {
+        sans: ["Rubik", "sans-serif"],
+      },
+    },
   },
-plugins: [require("daisyui")],
-}
+  plugins: [require("daisyui")],
+};
