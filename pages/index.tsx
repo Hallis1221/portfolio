@@ -10,7 +10,7 @@ import { LoadingIntro } from "../components/intro";
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
 
-const waittime = 1;
+const waittime = 10;
 const mainVariants = {
   initial: {
     opacity: 0,
@@ -54,34 +54,67 @@ const Home: NextPage = () => {
         transition={{ duration: 1.0 }}
       >
         <LandingComponent />
-        <div className="h-screen">Drum roll</div>
+        <div className="h-screen" />
         <div className="h-screen">Intro</div>
-        <div className="h-screen">
-          <h1 className="text-center text-8xl">
-            Projects!
-          </h1>
-          I have made a lot of stuff, most of which is never going to see the
-          light of day. Take a look at a few projects that made it to a usable
-          state, most of them are even open source! Make sure to check out the
-          tags to see if they are my faviorite :star:. You might even be able to
-          read what tech i used for it all
+        <div className="h-fit">
+          <h1 className="text-center text-8xl font-semibold">Projects!</h1>
+          <p className="mt-10 mb-7 mx-16 font-light">
+            I have made a variaty of stuff, most of which is never going to see
+            the light of day. Regardless, take a look at a few projects. Some
+            are complete, some are not so complete, most of them are even open
+            source! Make sure to check out the tags to see if they are my
+            faviorite :star: You might even be able to read what tech i used for
+            it all
+          </p>
           <div className="grid mx-4 my-5 justify-items-center grid-cols-3">
             <ProjectComponent
               title={"Mads"}
               description={
                 "A family friendly link shortening service made for the 21st century."
               }
-              image={"/projects/images/mads.png"}
+              image="mads.png"
+              github="hallis1221/mads-core"
               nextjs
               typescript
               recommended
               isNew
             />
-            <ProjectComponent title={""} description={""} />
-            <ProjectComponent title={""} description={""} />
-            <ProjectComponent title={""} description={""} />
-            <ProjectComponent title={""} description={""} />
-            <ProjectComponent title={""} description={""} />
+            <ProjectComponent
+            title="My own portfolio"
+            description="My own portfolio for displaying - me! Check it out - oh wait"
+            nextjs
+            typescript
+            isNew
+            image="portfolio.png"
+            />
+            <ProjectComponent
+              title={"Marketools"}
+              description={
+                "The tool that automates the tedius, boring and repetetive marketplace tasks."
+              }
+              image="marketools.png"
+              typescript
+              remix
+              isNew
+            />
+            <ProjectComponent
+              title={"Modlar"}
+              description={
+                "A foundation for creating user powered apps, allowing users to change the UI themselves. "
+              }
+              flutter
+            />
+            <ProjectComponent
+              title={"Ukeplanr / Weekplanr"}
+              description={""}
+              flutter
+            />
+            <ProjectComponent
+              title={"Class Map Generator"}
+              description={""}
+              isOld
+              python
+            />
           </div>
         </div>
         <div className="h-screen">Knowledge</div>
@@ -184,29 +217,36 @@ function LandingComponent() {
 export function ProjectComponent(
   {
     isNew,
+    isOld,
     recommended,
     title,
     description,
     nextjs,
     remix,
+    python,
     typescript,
     flutter,
     javascript,
     image,
+    github,
   }: {
     isNew?: boolean;
+    isOld?: boolean;
     recommended?: boolean;
     title: string;
     description: string;
     nextjs?: boolean;
+    python?: boolean;
     remix?: boolean;
     typescript?: boolean;
     flutter?: boolean;
     javascript?: boolean;
     image?: string;
+    github?: string;
   } = {
     isNew: false,
     recommended: false,
+    python: false,
     title: "",
     description: "",
     nextjs: false,
@@ -242,11 +282,20 @@ export function ProjectComponent(
     color: "bg-pink-600",
   };
 
+  let pythonTag: TechTag = {
+    title: "Python",
+    color: "bg-green-600",
+  };
+
   return (
-    <div className="card w-96 my-5 bg-base-100 shadow-xl">
+    <motion.div
+      className="card w-96 my-5 bg-base-100 shadow-xl"
+      whileHover={{ scale: 1.2,  }}
+      whileTap={{ scale: 0.8,  borderRadius: "10%" }}
+    >
       <figure>
         <Image
-          src={image ? image : "https://via.placeholder.com/400x225"}
+          src={image ? "/projects/images/"+image : "https://via.placeholder.com/400x225"}
           width={400}
           height={225}
           alt={title + " - " + description + " image"}
@@ -257,6 +306,7 @@ export function ProjectComponent(
           {title}
 
           {isNew ? <div className="badge badge-secondary">NEW</div> : <></>}
+          {isOld ? <div className="badge badge-warning">OLD</div> : <></>}
 
           {recommended ? (
             <div className="badge badge-primary">RECOMMENDED</div>
@@ -265,7 +315,9 @@ export function ProjectComponent(
           )}
         </h2>
         <p>{description}</p>
-        <div className="card-actions justify-end">
+
+        <div className="card-actions justify-end mt-5">
+          {github ? <GithubLinkComponent repo={github} /> : <></>}
           {nextjs ? <TagComponent techTag={nextTag} /> : <></>}
 
           {remix ? <TagComponent techTag={remixTag} /> : <></>}
@@ -275,19 +327,53 @@ export function ProjectComponent(
           {flutter ? <TagComponent techTag={flutterTag} /> : <></>}
 
           {javascript ? <TagComponent techTag={javascriptTag} /> : <></>}
+
+          {python ? <TagComponent techTag={pythonTag} /> : <></>}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
 export function TagComponent({ techTag }: { techTag: TechTag }) {
-  console.log(techTag.color);
   return (
     <div className={`badge badge-info  ${techTag.color}`}>{techTag.title}</div>
   );
 }
 
+export function GithubLinkComponent({ repo }: { repo: string }) {
+  const iconVariants = {
+    hidden: {
+      pathLength: 0,
+      fill: "rgba(255, 255, 255, 0)",
+    },
+    visible: {
+      pathLength: 1,
+      fill: "rgba(255, 255, 255, 1)",
+    },
+  };
+
+  return (
+    <button
+      className="justify-start absolute left-8"
+      onClick={() => window.open("https://github.com/" + repo, "_blank")}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+      >
+        <motion.path
+          initial="hidden"
+          animate="visible"
+          variants={iconVariants}
+          d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+        />
+      </svg>
+    </button>
+  );
+}
 type TechTag = {
   title: string;
   color: string;
