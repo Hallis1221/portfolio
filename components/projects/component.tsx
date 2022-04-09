@@ -29,10 +29,12 @@ export function Projects() {
           <Project
             title={t("projects.portfolio.title")}
             description={t("projects.portfolio.description")}
+            url="https://www.halvor.codes"
+            github="hallis1221/portfolio"
+            image="portfolio.png"
             nextjs
             typescript
             isNew
-            image="portfolio.png"
           />
           <Project
             title={t("projects.mats.title").toString()}
@@ -46,11 +48,18 @@ export function Projects() {
             title={t("projects.modlar.title").toString()}
             description={t("projects.modlar.description").toString()}
             flutter
+            github="hallis1221/modlar"
           />
-          <Project title={"Ukeplanr / Weekplanr"} description={""} flutter />
+          <Project
+            title={"Ukeplaner"}
+            description={""}
+            github="hallis1221/ukeplaner"
+            flutter
+          />
           <Project
             title={"Class Map Generator"}
             description={""}
+            github="hallis1221/klassekartlager"
             isOld
             python
           />
