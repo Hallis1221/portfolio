@@ -68,14 +68,11 @@ const Home: NextPage = () => {
         <LandingComponent />
         <div className="h-screen" />
         <div className="h-fit">
-          <h1 className="text-center text-8xl font-semibold">Projects!</h1>
-          <p className="mt-10 mb-7 mx-16 font-light">
-            I have made a variaty of stuff, most of which is never going to see
-            the light of day. Regardless, take a look at a few projects. Some
-            are complete, some are not so complete, most of them are even open
-            source! Make sure to check out the tags to see if they are my
-            faviorite :star: You might even be able to read what tech i used for
-            it all
+          <h1 className="text-center text-8xl font-semibold">
+            {t("projects.title").toString()}
+          </h1>
+          <p className="mt-10 mb-7 mx-16 font-light text-center">
+            {t("projects.description").toString()}
           </p>
           <div className="grid mx-4 my-5 justify-items-center grid-cols-3">
             <ProjectComponent
@@ -186,7 +183,7 @@ function ContactFooter() {
             </svg>
           </a>
           <a
-          href="https://github.com/hallis1221"
+            href="https://github.com/hallis1221"
             target="_blank"
             rel="noreferrer"
           >
