@@ -5,7 +5,10 @@
         "description": "Utvikler fra Norge 🇳🇴"
 
     },
-
+    "citation": {
+        "content": "Programmering handler ikke om hva du vet; det handler om hva du kan finne ut.",
+        "author": "Chris Pine"
+    },
     "projects": {
         "title": "Prosjekter!",
         "description": "Ta en snikktitt på hva jeg har gjort. Dette er ferdige prosjekter, ting jeg jobber med og alt i mellom. Det meste er til og med åpen kildekode",
@@ -33,7 +36,7 @@
         }
 
     },
-    
+
     "footer": {
         "author": "Halvor Vivelstad",
         "tagline": "",

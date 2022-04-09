@@ -7,8 +7,8 @@ import { Landing } from "../components/landing";
 import { ContactFooter } from "../components/footer";
 import { Projects } from "../components/projects";
 import { Skills } from "../components/skills";
+import { waiter } from "../lib/config";
 
-const waittime = 1;
 const mainVariants = {
   initial: {
     opacity: 0,
@@ -34,8 +34,8 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     const ids = [
-      setTimeout(() => setShowIntro(false), 480 * waittime),
-      setTimeout(() => setMain(true), 570 * waittime),
+      setTimeout(() => setShowIntro(false), 480 * waiter),
+      setTimeout(() => setMain(true), 570 * waiter),
     ];
 
     return () => ids.forEach((id) => clearTimeout(id));

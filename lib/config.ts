@@ -1,1 +1,1 @@
-export const waiter = 1;
+export const waiter = 10;

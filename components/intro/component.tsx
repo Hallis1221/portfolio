@@ -1,29 +1,13 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "next-i18next";
 import React, { FC } from "react";
+import { divVariants, textVariants } from "./framer";
 
 import { Props } from "./props";
 
-const textVariants = {
-  initial: {
-    opacity: 0,
-  },
-  visible: {
-    opacity: 1,
-  },
-};
-
-const divVariants = {
-  initial: {
-    opacity: 1,
-    height: "100%",
-  },
-  invisible: {
-    opacity: 0,
-    height: 0,
-  },
-};
-
 export const LoadingIntro: FC<Props> = ({ visible }: Props) => {
+  const {t} = useTranslation("common");
+
   return (
     <motion.div
       initial="initial"
@@ -53,7 +37,7 @@ export const LoadingIntro: FC<Props> = ({ visible }: Props) => {
             duration: 1.2,
           }}
         >
-          {"citation.content"}
+          {t("citation.content").toString()}
         </motion.p>
         <motion.p
           className="text-base md:text-right dark:text-white-700 text-black-700"
@@ -65,7 +49,7 @@ export const LoadingIntro: FC<Props> = ({ visible }: Props) => {
             duration: 1.2,
           }}
         >
-          {"citation.author"}
+          {t("citation.author").toString()}
         </motion.p>
       </div>
     </motion.div>
