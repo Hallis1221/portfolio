@@ -8,6 +8,7 @@ import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { LoadingIntro } from "../components/intro";
 import Typewriter from "typewriter-effect";
+import Image from "next/image";
 
 const waittime = 1;
 const mainVariants = {
@@ -55,7 +56,34 @@ const Home: NextPage = () => {
         <LandingComponent />
         <div className="h-screen">Drum roll</div>
         <div className="h-screen">Intro</div>
-        <div className="h-screen">Projects</div>
+        <div className="h-screen">
+          <h1 className="text-center text-8xl">
+            Projects!
+          </h1>
+          I have made a lot of stuff, most of which is never going to see the
+          light of day. Take a look at a few projects that made it to a usable
+          state, most of them are even open source! Make sure to check out the
+          tags to see if they are my faviorite :star:. You might even be able to
+          read what tech i used for it all
+          <div className="grid mx-4 my-5 justify-items-center grid-cols-3">
+            <ProjectComponent
+              title={"Mads"}
+              description={
+                "A family friendly link shortening service made for the 21st century."
+              }
+              image={"/projects/images/mads.png"}
+              nextjs
+              typescript
+              recommended
+              isNew
+            />
+            <ProjectComponent title={""} description={""} />
+            <ProjectComponent title={""} description={""} />
+            <ProjectComponent title={""} description={""} />
+            <ProjectComponent title={""} description={""} />
+            <ProjectComponent title={""} description={""} />
+          </div>
+        </div>
         <div className="h-screen">Knowledge</div>
         <div className="h-screen">Contact</div>
       </motion.div>{" "}
@@ -81,9 +109,7 @@ function LandingComponent() {
   });
   return (
     <>
-      <div
-        className=" h-[1250px] w-screen"
-      >
+      <div className=" h-[1250px] w-screen">
         <motion.div
           variants={landingVariants}
           initial="initial"
@@ -151,7 +177,118 @@ function LandingComponent() {
           </div>
         </motion.div>
       </div>
-
     </>
   );
 }
+
+export function ProjectComponent(
+  {
+    isNew,
+    recommended,
+    title,
+    description,
+    nextjs,
+    remix,
+    typescript,
+    flutter,
+    javascript,
+    image,
+  }: {
+    isNew?: boolean;
+    recommended?: boolean;
+    title: string;
+    description: string;
+    nextjs?: boolean;
+    remix?: boolean;
+    typescript?: boolean;
+    flutter?: boolean;
+    javascript?: boolean;
+    image?: string;
+  } = {
+    isNew: false,
+    recommended: false,
+    title: "",
+    description: "",
+    nextjs: false,
+    remix: false,
+    typescript: false,
+    flutter: false,
+    javascript: false,
+    image: "",
+  }
+) {
+  let nextTag: TechTag = {
+    title: "Next.js",
+    color: "bg-blue-600",
+  };
+
+  let flutterTag: TechTag = {
+    title: "Flutter",
+    color: "bg-blue-600",
+  };
+
+  let javascriptTag: TechTag = {
+    title: "Javascript",
+    color: "bg-yellow-600",
+  };
+
+  let typescriptTag: TechTag = {
+    title: "Typescript",
+    color: "bg-blue-600",
+  };
+
+  let remixTag: TechTag = {
+    title: "Remix",
+    color: "bg-pink-600",
+  };
+
+  return (
+    <div className="card w-96 my-5 bg-base-100 shadow-xl">
+      <figure>
+        <Image
+          src={image ? image : "https://via.placeholder.com/400x225"}
+          width={400}
+          height={225}
+          alt={title + " - " + description + " image"}
+        />
+      </figure>
+      <div className="card-body">
+        <h2 className="card-title">
+          {title}
+
+          {isNew ? <div className="badge badge-secondary">NEW</div> : <></>}
+
+          {recommended ? (
+            <div className="badge badge-primary">RECOMMENDED</div>
+          ) : (
+            <></>
+          )}
+        </h2>
+        <p>{description}</p>
+        <div className="card-actions justify-end">
+          {nextjs ? <TagComponent techTag={nextTag} /> : <></>}
+
+          {remix ? <TagComponent techTag={remixTag} /> : <></>}
+
+          {typescript ? <TagComponent techTag={typescriptTag} /> : <></>}
+
+          {flutter ? <TagComponent techTag={flutterTag} /> : <></>}
+
+          {javascript ? <TagComponent techTag={javascriptTag} /> : <></>}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function TagComponent({ techTag }: { techTag: TechTag }) {
+  console.log(techTag.color);
+  return (
+    <div className={`badge badge-info  ${techTag.color}`}>{techTag.title}</div>
+  );
+}
+
+type TechTag = {
+  title: string;
+  color: string;
+};
