@@ -13,25 +13,31 @@
         "old": "GAMMEL",
         "recommended": "ANBEFALT",
 
-   
-            "mads": {
-                "title": "Mads",
-                "description": "A family friendly link shortening service made for the 21st century."
 
-            },
-            "portfolio": {
-                "title": "My own portfolio",
-                "description": "My own portfolio for displaying - me! Check it out - oh wait"
-            },
-            "mats": {
-                "title": "Marketools",
-                "description": "A tool that automates the tedius, boring and repetetive marketplace tasks."
-            },
-            "modlar": {
-                "title": "Modlar",
-                "description": " A foundation for creating user powered apps, allowing users to change the UI themselves.                "
-            }
-        
+        "mads": {
+            "title": "Mads",
+            "description": "A family friendly link shortening service made for the 21st century."
+
+        },
+        "portfolio": {
+            "title": "My own portfolio",
+            "description": "My own portfolio for displaying - me! Check it out - oh wait"
+        },
+        "mats": {
+            "title": "Marketools",
+            "description": "A tool that automates the tedius, boring and repetetive marketplace tasks."
+        },
+        "modlar": {
+            "title": "Modlar",
+            "description": " A foundation for creating user powered apps, allowing users to change the UI themselves.                "
+        }
+
+    },
+    
+    "footer": {
+        "author": "Halvor Vivelstad",
+        "tagline": "",
+        "copyright": "Copyright © 2022 - All rights reserved"
     }
 
 }

@@ -32,6 +32,12 @@
                 "description": " A foundation for creating user powered apps, allowing users to change the UI themselves.                "
             }
         
+    },
+
+    "footer": {
+        "author": "Halvor Vivelstad",
+        "tagline": "",
+        "copyright": "Copyright © 2022 - All rights reserved"
     }
 
 }
