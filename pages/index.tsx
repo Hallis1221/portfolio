@@ -33,10 +33,6 @@ const landingVariants = {
 const Home: NextPage = () => {
   const [showIntro, setShowIntro] = useState(true);
   const [main, setMain] = useState(false);
-  const [showLanding, setShowLanding] = useState(true);
-
-  const { scrollYProgress } = useViewportScroll();
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1.2, 0.5]);
 
   useEffect(() => {
     const ids = [
@@ -47,15 +43,6 @@ const Home: NextPage = () => {
     return () => ids.forEach((id) => clearTimeout(id));
   }, [setShowIntro]);
 
-  scrollYProgress.onChange((progress) => {
-    if (progress > 0.35) {
-      setShowLanding(false);
-    }
-    if (progress < 0.35) {
-      setShowLanding(true);
-    }
-  });
-
   return (
     <>
       <LoadingIntro visible={showIntro} />
@@ -65,74 +52,7 @@ const Home: NextPage = () => {
         animate={main ? "visible" : "initial"}
         transition={{ duration: 1.0 }}
       >
-        <div className="h-[1250px] w-screen">
-          <motion.div
-            variants={landingVariants}
-            initial="initial"
-            animate={showLanding ? "initial" : "gone"}
-            transition={{ duration: 0.5 }}
-            className={` mockup-window w-screen m-5 border fixed`}
-            style={{
-              scale,
-            }}
-          >
-            <div className="hero min-h-screen min-w-screen">
-              <div className="hero-overlay bg-transparent "></div>
-              <div className="hero-content text-center text-neutral-content">
-                <div className="">
-                  <h1 className="mb-16 text-8xl font-extrabold">
-                    Hey, I am Halvor{" "}
-                    <div className="inline">
-                      <div className="hover:transparent inline">👋 </div>
-                    </div>
-                  </h1>
-
-                  <div className="mb-5 flex text-center flex-row justify-center text-xl md:text-3xl">
-                    A
-                    <Typewriter
-                      options={{
-                        cursor: "",
-                        loop: true,
-                        wrapperClassName: "font-bold",
-                      }}
-                      onInit={(typewriter) => {
-                        typewriter
-                          .pauseFor(600 * waittime)
-                          .typeString(
-                            '<div class="px-2 text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-blue-800">typescript</div>'
-                          )
-
-                          .pauseFor(2500)
-                          .deleteAll()
-                          .typeString(
-                            '<div class="px-2 text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-purple-600">Next.js</div>'
-                          )
-                          .pauseFor(2500)
-                          .deleteAll()
-                          .typeString(
-                            '<div class="px-2 text-transparent bg-clip-text bg-gradient-to-br from-blue-500 via-pink-600 to-red-600">Remix</div>'
-                          )
-                          .pauseFor(2500)
-                          .deleteAll()
-                          .typeString(
-                            '<div class="px-2 text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-blue-600">flutter</div>'
-                          )
-                          .pauseFor(2500)
-                          .deleteAll()
-                          .typeString(
-                            '<div class="px-2 text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-yellow-600">javascript</div>'
-                          )
-
-                          .start();
-                      }}
-                    />
-                    developer from Norway 🇳🇴
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
+        <LandingComponent />
         <div className="h-screen">Drum roll</div>
         <div className="h-screen">Intro</div>
         <div className="h-screen">Projects</div>
@@ -144,3 +64,94 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+function LandingComponent() {
+  const { scrollYProgress } = useViewportScroll();
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1.2, 0.5]);
+
+  const [showLanding, setShowLanding] = useState(true);
+
+  scrollYProgress.onChange((progress) => {
+    if (progress > 0.35) {
+      setShowLanding(false);
+    }
+    if (progress < 0.35) {
+      setShowLanding(true);
+    }
+  });
+  return (
+    <>
+      <div
+        className=" h-[1250px] w-screen"
+      >
+        <motion.div
+          variants={landingVariants}
+          initial="initial"
+          animate={showLanding ? "initial" : "gone"}
+          transition={{ duration: 0.5 }}
+          className={`mockup-window w-screen m-5 border fixed`}
+          style={{
+            scale,
+          }}
+        >
+          <div className="hero min-h-screen min-w-screen">
+            <div className="hero-overlay bg-transparent "></div>
+            <div className="hero-content text-center text-neutral-content">
+              <div className="">
+                <h1 className="mb-5 md:mb-16 m-7 md:m-0 text-6xl md:text-8xl font-extrabold">
+                  Hey, I am Halvor{" "}
+                  <div className="inline">
+                    <div className="hover:transparent inline">👋 </div>
+                  </div>
+                </h1>
+
+                <div className="mb-5 flex text-center flex-row justify-center text-xl md:text-3xl">
+                  A
+                  <Typewriter
+                    options={{
+                      cursor: "",
+                      loop: true,
+                      wrapperClassName: "font-bold",
+                    }}
+                    onInit={(typewriter) => {
+                      typewriter
+                        .pauseFor(600 * waittime)
+                        .typeString(
+                          '<div class="px-2 text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-blue-800">typescript</div>'
+                        )
+
+                        .pauseFor(2500)
+                        .deleteAll()
+                        .typeString(
+                          '<div class="px-2 text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-purple-600">Next.js</div>'
+                        )
+                        .pauseFor(2500)
+                        .deleteAll()
+                        .typeString(
+                          '<div class="px-2 text-transparent bg-clip-text bg-gradient-to-br from-blue-500 via-pink-600 to-red-600">Remix</div>'
+                        )
+                        .pauseFor(2500)
+                        .deleteAll()
+                        .typeString(
+                          '<div class="px-2 text-transparent bg-clip-text bg-gradient-to-br from-blue-400 to-blue-600">flutter</div>'
+                        )
+                        .pauseFor(2500)
+                        .deleteAll()
+                        .typeString(
+                          '<div class="px-2 text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-yellow-600">javascript</div>'
+                        )
+
+                        .start();
+                    }}
+                  />
+                  developer from Norway 🇳🇴
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+    </>
+  );
+}
