@@ -195,7 +195,7 @@ function ContactFooter() {
 
 function LandingComponent() {
   const { scrollYProgress } = useViewportScroll();
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1.2, 0.5]);
+  const scale = useTransform(scrollYProgress, [0, 0.4], [1.2, 0.5]);
 
   const [showLanding, setShowLanding] = useState(true);
   const { t } = useTranslation("common");
