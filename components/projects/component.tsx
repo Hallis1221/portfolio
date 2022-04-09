@@ -15,11 +15,11 @@ export function Projects() {
         </p>
         <div className="grid mx-4 my-5 justify-items-center grid-cols-3">
           <Project
-            title={t("projects.mads.title")}
-            description={t("projects.mads.description")}
+            title={t("projects.mads.title").toString()}
+            description={t("projects.mads.description").toString()}
             image="mads.png"
-            github="hallis1221/mads-core"
-            url="https://marketads.me"
+            github={"hallis1221/mads-core"}
+            url={"https://marketads.me"}
             nextjs
             typescript
             recommended
@@ -34,16 +34,16 @@ export function Projects() {
             image="portfolio.png"
           />
           <Project
-            title={t("projects.mats.title")}
-            description={t("projects.mats.description")}
+            title={t("projects.mats.title").toString()}
+            description={t("projects.mats.description").toString()}
             image="marketools.png"
             typescript
             remix
             isNew
           />
           <Project
-            title={t("projects.modlar.title")}
-            description={t("projects.modlar.description")}
+            title={t("projects.modlar.title").toString()}
+            description={t("projects.modlar.description").toString()}
             flutter
           />
           <Project title={"Ukeplanr / Weekplanr"} description={""} flutter />

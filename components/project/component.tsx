@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "next-i18next";
-import { TechTag } from "../../lib/types/techtag";
+import type { TechTag } from "../../lib/types/techtag";
 import { GithubLinkComponent } from "../ghlive";
 import { TagComponent } from "../tag";
 import { ViewLiveComponent } from "../viewlive";
@@ -23,20 +23,20 @@ export function Project(
       github,
       url,
     }: {
-      isNew?: boolean;
-      isOld?: boolean;
-      recommended?: boolean;
-      title: string;
-      description: string;
-      nextjs?: boolean;
-      python?: boolean;
-      remix?: boolean;
-      typescript?: boolean;
-      flutter?: boolean;
-      javascript?: boolean;
-      image?: string;
-      github?: string;
-      url?: string;
+        title: string;
+        description: string;
+      isNew?: boolean | undefined;
+      isOld?: boolean | undefined;
+      recommended?: boolean | undefined;
+      nextjs?: boolean | undefined;
+      python?: boolean | undefined;
+      remix?: boolean | undefined;
+      typescript?: boolean | undefined;
+      flutter?: boolean | undefined;
+      javascript?: boolean | undefined;
+      image?: string | undefined;
+      github?: string | undefined;
+      url?: string  | undefined;
     } = {
       isNew: false,
       recommended: false,
@@ -49,6 +49,8 @@ export function Project(
       flutter: false,
       javascript: false,
       image: "",
+      github: undefined,
+      url: undefined,
     }
   ) {
     const { t } = useTranslation("common");
@@ -133,8 +135,8 @@ export function Project(
           <div className="card-actions justify-end mt-5">
             <div className="justify-start absolute left-5 ">
               <div className="flex flex-row">
-                {github ? <GithubLinkComponent repo={github} /> : <></>}
-                {url ? <ViewLiveComponent url={url} /> : <></>}
+              {github || typeof github === "string" ? <GithubLinkComponent repo={github} /> : <></>}
+                {url || typeof url === "string" ? <ViewLiveComponent url={url} /> : <></>}
               </div>
             </div>
   

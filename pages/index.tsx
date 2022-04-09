@@ -3,7 +3,6 @@ import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { LoadingIntro } from "../components/intro";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { useTranslation } from "react-i18next";
 import { Landing } from "../components/landing";
 import { ContactFooter } from "../components/footer";
 import { Projects } from "../components/projects";
