@@ -74,7 +74,7 @@ export function Landing() {
                         .deleteAll()
                         .typeString(
                           '<div class="text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-yellow-600">javascript</div>'
-                        )
+                        ).pauseFor(2500)
                         .start();
                     }}
                   />
