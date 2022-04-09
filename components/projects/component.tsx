@@ -24,6 +24,7 @@ export function Projects() {
             typescript
             recommended
             isNew
+            gql
           />
           <Project
             title={t("projects.portfolio.title")}

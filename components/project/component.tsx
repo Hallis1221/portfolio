@@ -19,6 +19,7 @@ export function Project(
       typescript,
       flutter,
       javascript,
+      gql,
       image,
       github,
       url,
@@ -34,6 +35,7 @@ export function Project(
       typescript?: boolean | undefined;
       flutter?: boolean | undefined;
       javascript?: boolean | undefined;
+      gql?: boolean | undefined;
       image?: string | undefined;
       github?: string | undefined;
       url?: string  | undefined;
@@ -62,7 +64,7 @@ export function Project(
   
     let flutterTag: TechTag = {
       title: "Flutter",
-      color: "bg-blue-600",
+      color: "bg-blue-400",
     };
   
     let javascriptTag: TechTag = {
@@ -72,7 +74,7 @@ export function Project(
   
     let typescriptTag: TechTag = {
       title: "Typescript",
-      color: "bg-blue-600",
+      color: "bg-blue-800",
     };
   
     let remixTag: TechTag = {
@@ -84,6 +86,11 @@ export function Project(
       title: "Python",
       color: "bg-green-600",
     };
+
+    let gqlTag: TechTag = {
+        title: "GraphQL",
+        color: "bg-pink-500"
+    }
   
     return (
       <motion.div
@@ -143,6 +150,8 @@ export function Project(
             {nextjs ? <TagComponent techTag={nextTag} /> : <></>}
   
             {remix ? <TagComponent techTag={remixTag} /> : <></>}
+
+            {gql ? <TagComponent techTag={gqlTag}/> : <></>}
   
             {typescript ? <TagComponent techTag={typescriptTag} /> : <></>}
   
@@ -151,6 +160,7 @@ export function Project(
             {javascript ? <TagComponent techTag={javascriptTag} /> : <></>}
   
             {python ? <TagComponent techTag={pythonTag} /> : <></>}
+
           </div>
         </div>
       </motion.div>
