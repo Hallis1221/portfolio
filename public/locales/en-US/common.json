@@ -1,3 +1,37 @@
 {
-    "hello": "world"
+    "landing": {
+        "title": "Hey, I am Halvor 👋",
+        "a": "A",
+        "description": "developer from Norway 🇳🇴"
+
+    },
+
+    "projects": {
+        "title": "Projects!",
+        "description": "I have made a variaty of stuff, most of which is never going to see the light of day. Regardless, take a look at a few projects. Some are complete, some are not so complete, most of them are even open source! Make sure to check out the tags to see if they are my faviorite :star: You might even be able to read what tech i used for it all",
+        "new": "NEW",
+        "old": "OLD",
+        "recommended": "RECOMMENDED",
+
+   
+            "mads": {
+                "title": "Mads",
+                "description": "A family friendly link shortening service made for the 21st century."
+
+            },
+            "portfolio": {
+                "title": "My own portfolio",
+                "description": "My own portfolio for displaying - me! Check it out - oh wait"
+            },
+            "mats": {
+                "title": "Marketools",
+                "description": "A tool that automates the tedius, boring and repetetive marketplace tasks."
+            },
+            "modlar": {
+                "title": "Modlar",
+                "description": " A foundation for creating user powered apps, allowing users to change the UI themselves.                "
+            }
+        
+    }
+
 }

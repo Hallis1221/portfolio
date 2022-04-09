@@ -9,8 +9,10 @@ import { useEffect, useState } from "react";
 import { LoadingIntro } from "../components/intro";
 import Typewriter from "typewriter-effect";
 import Image from "next/image";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "react-i18next";
 
-const waittime = 10;
+const waittime = 1;
 const mainVariants = {
   initial: {
     opacity: 0,
@@ -31,9 +33,19 @@ const landingVariants = {
   },
 };
 
+export async function getStaticProps({ locale }: any) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+    },
+  };
+}
+
 const Home: NextPage = () => {
   const [showIntro, setShowIntro] = useState(true);
   const [main, setMain] = useState(false);
+
+  const { t } = useTranslation("common");
 
   useEffect(() => {
     const ids = [
@@ -55,7 +67,7 @@ const Home: NextPage = () => {
       >
         <LandingComponent />
         <div className="h-screen" />
-        <div className="h-screen">Intro</div>
+        <div className="h-screen"/>
         <div className="h-fit">
           <h1 className="text-center text-8xl font-semibold">Projects!</h1>
           <p className="mt-10 mb-7 mx-16 font-light">
@@ -68,10 +80,8 @@ const Home: NextPage = () => {
           </p>
           <div className="grid mx-4 my-5 justify-items-center grid-cols-3">
             <ProjectComponent
-              title={"Mads"}
-              description={
-                "A family friendly link shortening service made for the 21st century."
-              }
+              title={t("projects.mads.title")}
+              description={t("projects.mads.description")}
               image="mads.png"
               github="hallis1221/mads-core"
               nextjs
@@ -80,28 +90,24 @@ const Home: NextPage = () => {
               isNew
             />
             <ProjectComponent
-            title="My own portfolio"
-            description="My own portfolio for displaying - me! Check it out - oh wait"
-            nextjs
-            typescript
-            isNew
-            image="portfolio.png"
+              title={t("projects.portfolio.title")}
+              description={t("projects.portfolio.description")}
+              nextjs
+              typescript
+              isNew
+              image="portfolio.png"
             />
             <ProjectComponent
-              title={"Marketools"}
-              description={
-                "The tool that automates the tedius, boring and repetetive marketplace tasks."
-              }
+              title={t("projects.mats.title")}
+              description={t("projects.mats.description")}
               image="marketools.png"
               typescript
               remix
               isNew
             />
             <ProjectComponent
-              title={"Modlar"}
-              description={
-                "A foundation for creating user powered apps, allowing users to change the UI themselves. "
-              }
+              title={t("projects.modlar.title")}
+              description={t("projects.modlar.description")}
               flutter
             />
             <ProjectComponent
@@ -131,6 +137,7 @@ function LandingComponent() {
   const scale = useTransform(scrollYProgress, [0, 0.5], [1.2, 0.5]);
 
   const [showLanding, setShowLanding] = useState(true);
+  const { t } = useTranslation("common");
 
   scrollYProgress.onChange((progress) => {
     if (progress > 0.35) {
@@ -158,14 +165,11 @@ function LandingComponent() {
             <div className="hero-content text-center text-neutral-content">
               <div className="">
                 <h1 className="mb-5 md:mb-16 m-7 md:m-0 text-6xl md:text-8xl font-extrabold">
-                  Hey, I am Halvor{" "}
-                  <div className="inline">
-                    <div className="hover:transparent inline">👋 </div>
-                  </div>
+                  {t("landing.title").toString()}
                 </h1>
 
                 <div className="mb-5 flex text-center flex-row justify-center text-xl md:text-3xl">
-                  A
+                  {t("landing.a").toString()}
                   <Typewriter
                     options={{
                       cursor: "",
@@ -203,7 +207,7 @@ function LandingComponent() {
                         .start();
                     }}
                   />
-                  developer from Norway 🇳🇴
+                  {t("landing.description").toString()}
                 </div>
               </div>
             </div>
@@ -257,6 +261,8 @@ export function ProjectComponent(
     image: "",
   }
 ) {
+  const { t } = useTranslation("common");
+
   let nextTag: TechTag = {
     title: "Next.js",
     color: "bg-blue-600",
@@ -290,12 +296,16 @@ export function ProjectComponent(
   return (
     <motion.div
       className="card w-96 my-5 bg-base-100 shadow-xl"
-      whileHover={{ scale: 1.2,  }}
-      whileTap={{ scale: 0.8,  borderRadius: "10%" }}
+      whileHover={{ scale: 1.2 }}
+      whileTap={{ scale: 0.8, borderRadius: "10%" }}
     >
       <figure>
         <Image
-          src={image ? "/projects/images/"+image : "https://via.placeholder.com/400x225"}
+          src={
+            image
+              ? "/projects/images/" + image
+              : "https://via.placeholder.com/400x225"
+          }
           width={400}
           height={225}
           alt={title + " - " + description + " image"}
@@ -305,11 +315,25 @@ export function ProjectComponent(
         <h2 className="card-title">
           {title}
 
-          {isNew ? <div className="badge badge-secondary">NEW</div> : <></>}
-          {isOld ? <div className="badge badge-warning">OLD</div> : <></>}
+          {isNew ? (
+            <div className="badge badge-secondary">
+              {t("projects.new").toString()}
+            </div>
+          ) : (
+            <></>
+          )}
+          {isOld ? (
+            <div className="badge badge-warning">
+              {t("projects.old").toString()}
+            </div>
+          ) : (
+            <></>
+          )}
 
           {recommended ? (
-            <div className="badge badge-primary">RECOMMENDED</div>
+            <div className="badge badge-primary">
+              {t("projects.recommended").toString()}
+            </div>
           ) : (
             <></>
           )}
