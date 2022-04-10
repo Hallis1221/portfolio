@@ -1,35 +1,13 @@
 import { useTranslation } from "next-i18next";
-import getProjects from "../../lib/projects";
+import getProjects, { getProjectsComponentList } from "../../lib/projects";
 import type { Project } from "../../lib/types/project";
 import { Project as ProjectComponent } from "../project/component";
 
 export function Projects() {
   const { t } = useTranslation("common");
 
-  let projects: Array<JSX.Element> = [];
-  getProjects(t).forEach((project) => {
-    projects.push(
-      <ProjectComponent
-        key={project.id}
-        id={project.id}
-        title={project.title}
-        description={project.description}
-        flutter={project.flutter}
-        github={project.github}
-        gql={project.gql}
-        image={project.image}
-        isNew={project.isNew}
-        isOld={project.isOld}
-        javascript={project.javascript}
-        nextjs={project.nextjs}
-        python={project.python}
-        recommended={project.recommended}
-        remix={project.remix}
-        typescript={project.typescript}
-        url={project.url}
-      />
-    );
-  });
+  let projects: Array<JSX.Element> = getProjectsComponentList(t);
+  
   return (
     <>
       <div className="h-screen" />

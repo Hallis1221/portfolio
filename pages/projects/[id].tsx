@@ -1,5 +1,13 @@
-function ProjectDetailPage(){
-    return <h1>HIII</h1>
+import { Navbar } from "../../components/navbar";
+
+function ProjectDetailPage() {
+  return (
+    <>
+     <div>
+         <Navbar/>
+     </div>
+    </>
+  );
 }
 
 export default ProjectDetailPage;
