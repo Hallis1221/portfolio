@@ -60,36 +60,43 @@ export function Project(
     let nextTag: TechTag = {
       title: "Next.js",
       color: "bg-blue-600",
+      url: "https://nextjs.org/"
     };
   
     let flutterTag: TechTag = {
       title: "Flutter",
       color: "bg-blue-400",
+      url: "https://flutter.dev"
     };
   
     let javascriptTag: TechTag = {
       title: "Javascript",
       color: "bg-yellow-600",
+      url: "https://javascript.com"
     };
   
     let typescriptTag: TechTag = {
       title: "Typescript",
       color: "bg-blue-800",
+      url: "https://www.typescriptlang.org/"
     };
   
     let remixTag: TechTag = {
       title: "Remix",
       color: "bg-pink-600",
+    url:"https://remix.run"
     };
   
     let pythonTag: TechTag = {
       title: "Python",
       color: "bg-green-600",
+      url: "https://python.org"
     };
 
     let gqlTag: TechTag = {
         title: "GraphQL",
-        color: "bg-pink-500"
+        color: "bg-pink-500",
+        url: "https://graphql.org"
     }
   
     return (
