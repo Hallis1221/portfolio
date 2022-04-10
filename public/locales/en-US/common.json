@@ -18,7 +18,6 @@
         "old": "OLD",
         "recommended": "RECOMMENDED",
 
-
         "mads": {
             "title": "Mads",
             "description": "A family friendly link shortening service made for the 21st century."
@@ -37,6 +36,12 @@
             "description": " A foundation for creating user powered apps, allowing users to change the UI themselves.                "
         }
 
+    },
+    "navbar": {
+        "cv": "Resume",
+        "projects": {
+            "title": "Prosjekter"
+        }
     },
 
     "footer": {

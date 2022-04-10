@@ -42,5 +42,12 @@
         "tagline": "",
         "copyright": "Copyright © 2022 - All rights reserved"
     }
+,
+    "navbar": {
+        "cv": "CV",
+        "projects": {
+            "title": "Prosjekter"
+        }
+    }
 
 }

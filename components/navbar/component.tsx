@@ -54,11 +54,11 @@ export function Navbar() {
                 className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <a>Item 1</a>
+                  <a>CV</a>
                 </li>
                 <li tabIndex={0}>
                   <a className="justify-between">
-                    Parent
+                    {t("projects.title").toString()}
                     <svg
                       className="fill-current"
                       xmlns="http://www.w3.org/2000/svg"
@@ -88,11 +88,11 @@ export function Navbar() {
           <div className="navbar-center hidden lg:flex z-10">
             <ul className="menu menu-horizontal p-0">
               <li>
-                <a>Item 1</a>
+                <a>{t("navbar.cv").toString()}</a>
               </li>
               <li className="" tabIndex={0}>
                 <a>
-                  Parent
+                  {t("navbar.projects.title").toString()}
                   <svg
                     className="fill-current"
                     xmlns="http://www.w3.org/2000/svg"

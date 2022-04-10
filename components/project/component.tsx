@@ -5,9 +5,12 @@ import { GithubLinkComponent } from "../ghlive";
 import { TagComponent } from "../tag";
 import { ViewLiveComponent } from "../viewlive";
 import Image from "next/image";
+import { Project } from "../../lib/types/project";
+import Link from "next/link";
 
 export function Project(
     {
+      id,
       isNew,
       isOld,
       recommended,
@@ -23,23 +26,8 @@ export function Project(
       image,
       github,
       url,
-    }: {
-        title: string;
-        description: string;
-      isNew?: boolean | undefined;
-      isOld?: boolean | undefined;
-      recommended?: boolean | undefined;
-      nextjs?: boolean | undefined;
-      python?: boolean | undefined;
-      remix?: boolean | undefined;
-      typescript?: boolean | undefined;
-      flutter?: boolean | undefined;
-      javascript?: boolean | undefined;
-      gql?: boolean | undefined;
-      image?: string | undefined;
-      github?: string | undefined;
-      url?: string  | undefined;
-    } = {
+    }: Project = {
+      id: "",
       isNew: false,
       recommended: false,
       python: false,
@@ -104,7 +92,10 @@ export function Project(
         className="card w-96 my-5 bg-base-100 shadow-xl"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 1.05, borderRadius: "10%" }}
+        
       >
+        <Link href={"/projects/"+id} passHref>
+          <div>
         <figure>
           <Image
             src={
@@ -170,6 +161,8 @@ export function Project(
 
           </div>
         </div>
+        </div>
+        </Link>
       </motion.div>
     );
   }
