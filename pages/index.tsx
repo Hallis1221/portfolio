@@ -8,6 +8,7 @@ import { ContactFooter } from "../components/footer";
 import { Projects } from "../components/projects";
 import { Skills } from "../components/skills";
 import { waiter } from "../lib/config";
+import { Navbar } from "../components/navbar";
 
 const mainVariants = {
   initial: {
@@ -50,6 +51,7 @@ const Home: NextPage = () => {
         animate={main ? "visible" : "initial"}
         transition={{ duration: 1.0 }}
       >
+        <Navbar/>
         <Landing />
         <Projects />
         <Skills />

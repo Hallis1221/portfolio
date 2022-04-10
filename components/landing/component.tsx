@@ -28,7 +28,7 @@ export function Landing() {
           initial="initial"
           animate={showLanding ? "initial" : "gone"}
           transition={{ duration: 0.5 }}
-          className={`mockup-window w-screen m-5 border fixed`}
+          className={`mockup-window w-screen border fixed`}
           style={{
             scale,
           }}
