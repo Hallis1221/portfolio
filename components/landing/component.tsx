@@ -12,6 +12,8 @@ export function Landing() {
   const [showLanding, setShowLanding] = useState(true);
   const { t } = useTranslation("common");
 
+ const [firstRun, setfirstRun] = useState(1);
+
   scrollYProgress.onChange((progress) => {
     if (progress > 0.35) {
       setShowLanding(false);
@@ -28,7 +30,7 @@ export function Landing() {
           initial="initial"
           animate={showLanding ? "initial" : "gone"}
           transition={{ duration: 0.5 }}
-          className={`mockup-window w-screen border fixed`}
+          className={`mockup-window w-screen border  fixed`}
           style={{
             scale,
           }}
@@ -51,7 +53,7 @@ export function Landing() {
                     }}
                     onInit={(typewriter: TypewriterClass) => {
                       typewriter
-                        .pauseFor(600 * waiter)
+                        .pauseFor(600 * waiter * firstRun)
                         .typeString(
                           '<div class="text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-blue-800">typescript</div>'
                         )
@@ -75,7 +77,8 @@ export function Landing() {
                         .typeString(
                           '<div class="text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-yellow-600">javascript</div>'
                         ).pauseFor(2500)
-                        .start();
+                        .start()
+                         setfirstRun(0)
                     }}
                   />
                   <div className="pl-2">
