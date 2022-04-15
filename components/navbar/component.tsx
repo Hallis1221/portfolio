@@ -5,16 +5,18 @@ import { useState } from "react";
 import { navVariants } from "./framer";
 
 export function ProgressiveNavbar() {
+const navbarCool = false;
+
   const { scrollYProgress } = useViewportScroll();
   const scale = useTransform(scrollYProgress, [0, 0.4], [0.5, 1]);
 
-  const [showNav, setShownav] = useState(true);
+  const [showNav, setShownav] = useState(false);
 
   scrollYProgress.onChange((progress) => {
     if (progress > 0.35) {
       setShownav(false);
     }
-    if (progress < 0.35) {
+    if (progress < 0.35 && navbarCool) {
       setShownav(true);
     }
   });
@@ -23,7 +25,7 @@ export function ProgressiveNavbar() {
       <motion.div
         variants={navVariants}
         initial="initial"
-        animate={showNav ? "initial" : "visible"}
+        animate={showNav ? "visible" : "initial"}
         transition={{ duration: 0.25 }}
         className={`w-screen fixed z-10`}
         style={{

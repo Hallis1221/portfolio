@@ -7,6 +7,16 @@ import { ViewLiveComponent } from "../viewlive";
 import Image from "next/image";
 import { Project } from "../../lib/types/project";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import {
+  nextTag,
+  remixTag,
+  gqlTag,
+  typescriptTag,
+  flutterTag,
+  javascriptTag,
+  pythonTag,
+} from "./tags";
 
 export function Project(
   {
@@ -44,48 +54,7 @@ export function Project(
   }
 ) {
   const { t } = useTranslation("common");
-
-  let nextTag: TechTag = {
-    title: "Next.js",
-    color: "bg-blue-600",
-    url: "https://nextjs.org/",
-  };
-
-  let flutterTag: TechTag = {
-    title: "Flutter",
-    color: "bg-blue-400",
-    url: "https://flutter.dev",
-  };
-
-  let javascriptTag: TechTag = {
-    title: "Javascript",
-    color: "bg-yellow-600",
-    url: "https://javascript.com",
-  };
-
-  let typescriptTag: TechTag = {
-    title: "Typescript",
-    color: "bg-blue-800",
-    url: "https://www.typescriptlang.org/",
-  };
-
-  let remixTag: TechTag = {
-    title: "Remix",
-    color: "bg-pink-600",
-    url: "https://remix.run",
-  };
-
-  let pythonTag: TechTag = {
-    title: "Python",
-    color: "bg-green-600",
-    url: "https://python.org",
-  };
-
-  let gqlTag: TechTag = {
-    title: "GraphQL",
-    color: "bg-pink-500",
-    url: "https://graphql.org",
-  };
+  const router = useRouter();
 
   return (
     <motion.div
@@ -93,8 +62,13 @@ export function Project(
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 1.05, borderRadius: "10%" }}
     >
-      <Link href={"/projects/" + id} passHref>
-        <figure className="hover:cursor-pointer">
+      <Link href={"/projects/" + id} passHref replace={false}>
+        <figure
+          className="hover:cursor-pointer"
+          onClick={() => {
+            setTimeout(() => router.push(`/projects/${id}`), 200);
+          }}
+        >
           <Image
             src={
               image

@@ -6,7 +6,7 @@ const nextConfig = {
   reactStrictMode: true,
   i18n,
   images: {
-    domains: ['via.placeholder.com', 'halvor.codes', 'www.halvor.codes'],
+    domains: ['via.placeholder.com', 'halvor.codes', 'www.halvor.codes', "img.icons8.com"],
   },
 }
 

@@ -4,6 +4,8 @@ import { useState } from "react";
 import { landingVariants } from "./framer";
 import Typewriter, { TypewriterClass } from "typewriter-effect";
 import { waiter } from "../../lib/config";
+import Image from "next/image";
+import { ConfettiLayer } from "../confetti";
 
 export function Landing() {
   const { scrollYProgress } = useViewportScroll();
@@ -12,7 +14,7 @@ export function Landing() {
   const [showLanding, setShowLanding] = useState(true);
   const { t } = useTranslation("common");
 
- const [firstRun, setfirstRun] = useState(1);
+  const [firstRun, setfirstRun] = useState(1);
 
   scrollYProgress.onChange((progress) => {
     if (progress > 0.35) {
@@ -22,6 +24,7 @@ export function Landing() {
       setShowLanding(true);
     }
   });
+
   return (
     <>
       <div className=" h-[1250px] w-screen">
@@ -35,6 +38,7 @@ export function Landing() {
             scale,
           }}
         >
+          <ConfettiLayer/>
           <div className="hero min-h-screen min-w-screen">
             <div className="hero-overlay bg-transparent "></div>
             <div className="hero-content text-center text-neutral-content">
@@ -76,15 +80,36 @@ export function Landing() {
                         .deleteAll()
                         .typeString(
                           '<div class="text-transparent bg-clip-text bg-gradient-to-br from-yellow-400 to-yellow-600">javascript</div>'
-                        ).pauseFor(2500)
-                        .start()
-                         setfirstRun(0)
+                        )
+                        .pauseFor(2500)
+                        .start();
+                      setfirstRun(0);
                     }}
                   />
                   <div className="pl-2">
                     {t("landing.description").toString()}
                   </div>
                 </div>
+                <motion.div
+                  className="invert absolute m-auto mt-12 left-0 right-0 opacity-75"
+                  animate={{ y: 10, opacity: 0.8 }}
+                  transition={{
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    duration: 2,
+                  }}
+                  style={{
+                    scale,
+                    opacity: 0.8,
+                  }}
+                >
+                  <Image
+                    src="https://img.icons8.com/external-doodle-bomsymbols-/344/external-design-doodle-web-design-device-set-1-doodle-bomsymbols--21.png"
+                    height={55}
+                    width={55}
+                    alt="Scroll down"
+                  />
+                </motion.div>
               </div>
             </div>
           </div>
