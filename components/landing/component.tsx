@@ -5,7 +5,7 @@ import { landingVariants } from "./framer";
 import Typewriter, { TypewriterClass } from "typewriter-effect";
 import { waiter } from "../../lib/config";
 import Image from "next/image";
-import { ConfettiLayer } from "../confetti";
+import Confetti from "react-confetti";
 
 export function Landing() {
   const { scrollYProgress } = useViewportScroll();
@@ -38,7 +38,7 @@ export function Landing() {
             scale,
           }}
         >
-          <ConfettiLayer/>
+          
           <div className="hero min-h-screen min-w-screen">
             <div className="hero-overlay bg-transparent "></div>
             <div className="hero-content text-center text-neutral-content">
