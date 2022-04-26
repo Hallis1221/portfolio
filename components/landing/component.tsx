@@ -27,7 +27,7 @@ export function Landing() {
 
   return (
     <>
-      <div className=" h-[1250px] w-screen">
+      <div className=" overflow-hidden mb-96 w-screen h-screen">
         <motion.div
           variants={landingVariants}
           initial="initial"
@@ -39,11 +39,11 @@ export function Landing() {
           }}
         >
           
-          <div className="hero min-h-screen min-w-screen">
+          <div className="overflow-hidden hero min-h-screen min-w-screen">
             <div className="hero-overlay bg-transparent "></div>
             <div className="hero-content text-center text-neutral-content">
               <div className="">
-                <h1 className="mb-5 md:mb-16 m-7 md:m-0 text-6xl md:text-8xl font-extrabold">
+                <h1 className="mb-5 md:mb-16 m-7 md:m-0 text-xl md:text-3xl lg:text-5xl xl:text-7xl 2xl:text-8xl font-extrabold">
                   {t("landing.title").toString()}
                 </h1>
 
@@ -91,7 +91,7 @@ export function Landing() {
                   </div>
                 </div>
                 <motion.div
-                  className="invert absolute m-auto mt-12 left-0 right-0 opacity-75"
+                  className="invert absolute m-auto  mb-16 left-0 right-0 opacity-75"
                   animate={{ y: 10, opacity: 0.8 }}
                   transition={{
                     repeat: Infinity,
@@ -115,6 +115,7 @@ export function Landing() {
           </div>
         </motion.div>
       </div>
+      <div className="h-screen w-screen mb-96"/>
     </>
   );
 }

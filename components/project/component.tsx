@@ -58,7 +58,7 @@ export function Project(
 
   return (
     <motion.div
-      className="card w-96 my-5 bg-base-100 shadow-xl"
+      className="card xl:w-80 2xl:w-96 my-5 bg-base-100 shadow-xl"
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 1.05, borderRadius: "10%" }}
     >

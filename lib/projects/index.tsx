@@ -12,7 +12,7 @@ export default function getProjects(t: TFunction): Project[] {
       github: "hallis1221/mads-core",
       url: "https://marketads.me",
       nextjs: true,
-      typescript: true,
+      typescript: false,
       recommended: true,
       isNew: true,
       gql: true,

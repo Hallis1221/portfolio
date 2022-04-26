@@ -50,6 +50,7 @@ const Home: NextPage = () => {
         initial="initial"
         animate={main ? "visible" : "initial"}
         transition={{ duration: 1.0 }}
+        className="overflow-hidden"
       >
         <ProgressiveNavbar/>
         <Landing />
